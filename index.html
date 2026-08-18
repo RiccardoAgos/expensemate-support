@@ -75,10 +75,75 @@
       margin: 0 auto;
     }
 
+    /* LANGUAGE */
+
+    .topbar {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+      padding-top: 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .lang {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .lang button {
+      border: 1px solid rgba(139, 92, 246, 0.38);
+      background: var(--primary-soft);
+      color: var(--text-primary);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+    }
+
+    .lang button:hover {
+      transform: translateY(-1px);
+    }
+
+    .lang button.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    [data-lang] {
+      display: none;
+    }
+
+    html[lang="it"] [data-lang="it"] {
+      display: block;
+    }
+
+    html[lang="en"] [data-lang="en"] {
+      display: block;
+    }
+
+    .inline-lang[data-lang] {
+      display: none;
+    }
+
+    html[lang="it"] .inline-lang[data-lang="it"] {
+      display: inline;
+    }
+
+    html[lang="en"] .inline-lang[data-lang="en"] {
+      display: inline;
+    }
+
     /* HERO */
 
     .hero {
-      padding: 88px 0 56px;
+      padding: 52px 0 56px;
       text-align: center;
     }
 
@@ -390,8 +455,12 @@
     /* MOBILE */
 
     @media (max-width: 700px) {
+      .topbar {
+        justify-content: center;
+      }
+
       .hero {
-        padding-top: 64px;
+        padding-top: 38px;
       }
 
       .support-grid {
@@ -413,6 +482,26 @@
 <body>
   <div class="page">
 
+    <!-- LANGUAGE SWITCH -->
+
+    <div class="topbar">
+      <div class="lang">
+        <button
+          data-lang-button="it"
+          onclick="setLanguage('it')"
+        >
+          🇮🇹 Italiano
+        </button>
+
+        <button
+          data-lang-button="en"
+          onclick="setLanguage('en')"
+        >
+          🇬🇧 English
+        </button>
+      </div>
+    </div>
+
     <!-- HERO -->
 
     <header class="hero">
@@ -423,32 +512,64 @@
         </div>
 
         <div class="badge">
-          Official ExpenseMate Support
+          <span class="inline-lang" data-lang="it">
+            Supporto ufficiale ExpenseMate
+          </span>
+
+          <span class="inline-lang" data-lang="en">
+            Official ExpenseMate Support
+          </span>
         </div>
 
-        <h1>
-          We're here to help.
-        </h1>
+        <div data-lang="it">
+          <h1>
+            Siamo qui per aiutarti.
+          </h1>
 
-        <p>
-          Need assistance with ExpenseMate?
-          Find support information, contact details
-          and legal resources below.
-        </p>
+          <p>
+            Hai bisogno di assistenza con ExpenseMate?
+            Qui trovi informazioni di supporto, contatti
+            e risorse legali.
+          </p>
+        </div>
+
+        <div data-lang="en">
+          <h1>
+            We're here to help.
+          </h1>
+
+          <p>
+            Need assistance with ExpenseMate?
+            Find support information, contact details
+            and legal resources below.
+          </p>
+        </div>
 
         <div class="hero-actions">
           <a
             class="button button-primary"
             href="mailto:riccardoworker@gmail.com"
           >
-            Contact Support
+            <span class="inline-lang" data-lang="it">
+              Contatta il supporto
+            </span>
+
+            <span class="inline-lang" data-lang="en">
+              Contact Support
+            </span>
           </a>
 
           <a
             class="button button-secondary"
             href="#legal"
           >
-            Legal Information
+            <span class="inline-lang" data-lang="it">
+              Informazioni legali
+            </span>
+
+            <span class="inline-lang" data-lang="en">
+              Legal Information
+            </span>
           </a>
         </div>
 
@@ -468,28 +589,55 @@
             Support
           </div>
 
-          <h2 class="section-title">
-            Need help with ExpenseMate?
-          </h2>
+          <div data-lang="it">
+            <h2 class="section-title">
+              Hai bisogno di aiuto con ExpenseMate?
+            </h2>
 
-          <p class="section-description">
-            If you have a question, feedback
-            or encounter an issue while using the app,
-            feel free to contact us.
-          </p>
+            <p class="section-description">
+              Se hai una domanda, un suggerimento
+              o riscontri un problema durante l'utilizzo dell'app,
+              puoi contattarci liberamente.
+            </p>
+          </div>
+
+          <div data-lang="en">
+            <h2 class="section-title">
+              Need help with ExpenseMate?
+            </h2>
+
+            <p class="section-description">
+              If you have a question, feedback
+              or encounter an issue while using the app,
+              feel free to contact us.
+            </p>
+          </div>
 
           <div class="card contact-card">
 
             <div class="contact-info">
 
-              <h3>
-                Contact Support
-              </h3>
+              <div data-lang="it">
+                <h3>
+                  Contatta il supporto
+                </h3>
 
-              <p>
-                We'll do our best to help you
-                as quickly as possible.
-              </p>
+                <p>
+                  Faremo del nostro meglio per aiutarti
+                  il prima possibile.
+                </p>
+              </div>
+
+              <div data-lang="en">
+                <h3>
+                  Contact Support
+                </h3>
+
+                <p>
+                  We'll do our best to help you
+                  as quickly as possible.
+                </p>
+              </div>
 
               <div class="email">
                 riccardoworker@gmail.com
@@ -501,7 +649,13 @@
               class="button button-primary"
               href="mailto:riccardoworker@gmail.com"
             >
-              Send an Email
+              <span class="inline-lang" data-lang="it">
+                Invia un'email
+              </span>
+
+              <span class="inline-lang" data-lang="en">
+                Send an Email
+              </span>
             </a>
 
           </div>
@@ -516,15 +670,28 @@
             Help
           </div>
 
-          <h2 class="section-title">
-            Before contacting support
-          </h2>
+          <div data-lang="it">
+            <h2 class="section-title">
+              Prima di contattare il supporto
+            </h2>
 
-          <p class="section-description">
-            When reporting an issue,
-            including a few details helps us
-            understand and resolve it faster.
-          </p>
+            <p class="section-description">
+              Quando segnali un problema, includere alcune informazioni
+              ci aiuta a comprenderlo e risolverlo più rapidamente.
+            </p>
+          </div>
+
+          <div data-lang="en">
+            <h2 class="section-title">
+              Before contacting support
+            </h2>
+
+            <p class="section-description">
+              When reporting an issue,
+              including a few details helps us
+              understand and resolve it faster.
+            </p>
+          </div>
 
           <div class="support-grid">
 
@@ -534,14 +701,27 @@
                 📱
               </div>
 
-              <h3>
-                Device
-              </h3>
+              <div data-lang="it">
+                <h3>
+                  Dispositivo
+                </h3>
 
-              <p>
-                Include your device model
-                and operating system version.
-              </p>
+                <p>
+                  Indica il modello del dispositivo
+                  e la versione del sistema operativo.
+                </p>
+              </div>
+
+              <div data-lang="en">
+                <h3>
+                  Device
+                </h3>
+
+                <p>
+                  Include your device model
+                  and operating system version.
+                </p>
+              </div>
 
             </div>
 
@@ -551,14 +731,27 @@
                 🧩
               </div>
 
-              <h3>
-                Issue details
-              </h3>
+              <div data-lang="it">
+                <h3>
+                  Dettagli del problema
+                </h3>
 
-              <p>
-                Describe what happened
-                and the steps needed to reproduce the issue.
-              </p>
+                <p>
+                  Descrivi cosa è successo
+                  e i passaggi necessari per riprodurre il problema.
+                </p>
+              </div>
+
+              <div data-lang="en">
+                <h3>
+                  Issue details
+                </h3>
+
+                <p>
+                  Describe what happened
+                  and the steps needed to reproduce the issue.
+                </p>
+              </div>
 
             </div>
 
@@ -568,14 +761,27 @@
                 🧾
               </div>
 
-              <h3>
-                App version
-              </h3>
+              <div data-lang="it">
+                <h3>
+                  Versione dell'app
+                </h3>
 
-              <p>
-                If possible, include
-                the version of ExpenseMate you are using.
-              </p>
+                <p>
+                  Se possibile, indica la versione
+                  di ExpenseMate che stai utilizzando.
+                </p>
+              </div>
+
+              <div data-lang="en">
+                <h3>
+                  App version
+                </h3>
+
+                <p>
+                  If possible, include
+                  the version of ExpenseMate you are using.
+                </p>
+              </div>
 
             </div>
 
@@ -585,14 +791,27 @@
                 💡
               </div>
 
-              <h3>
-                Feedback
-              </h3>
+              <div data-lang="it">
+                <h3>
+                  Suggerimenti
+                </h3>
 
-              <p>
-                Suggestions and feedback
-                are always welcome.
-              </p>
+                <p>
+                  Suggerimenti e feedback
+                  sono sempre benvenuti.
+                </p>
+              </div>
+
+              <div data-lang="en">
+                <h3>
+                  Feedback
+                </h3>
+
+                <p>
+                  Suggestions and feedback
+                  are always welcome.
+                </p>
+              </div>
 
             </div>
 
@@ -611,15 +830,28 @@
             Legal
           </div>
 
-          <h2 class="section-title">
-            Privacy & Terms
-          </h2>
+          <div data-lang="it">
+            <h2 class="section-title">
+              Privacy e Termini
+            </h2>
 
-          <p class="section-description">
-            Learn more about how ExpenseMate
-            handles data and the terms that apply
-            when using the app.
-          </p>
+            <p class="section-description">
+              Scopri come ExpenseMate gestisce i dati
+              e consulta i termini applicabili all'utilizzo dell'app.
+            </p>
+          </div>
+
+          <div data-lang="en">
+            <h2 class="section-title">
+              Privacy & Terms
+            </h2>
+
+            <p class="section-description">
+              Learn more about how ExpenseMate
+              handles data and the terms that apply
+              when using the app.
+            </p>
+          </div>
 
           <div class="support-grid">
 
@@ -634,18 +866,35 @@
                 🔒
               </div>
 
-              <h3>
-                Privacy Policy
-              </h3>
+              <div data-lang="it">
+                <h3>
+                  Privacy Policy
+                </h3>
 
-              <p>
-                Learn how ExpenseMate
-                handles and protects your data.
-              </p>
+                <p>
+                  Scopri come ExpenseMate
+                  gestisce e protegge i tuoi dati.
+                </p>
 
-              <span class="link">
-                Read Privacy Policy →
-              </span>
+                <span class="link">
+                  Leggi la Privacy Policy →
+                </span>
+              </div>
+
+              <div data-lang="en">
+                <h3>
+                  Privacy Policy
+                </h3>
+
+                <p>
+                  Learn how ExpenseMate
+                  handles and protects your data.
+                </p>
+
+                <span class="link">
+                  Read Privacy Policy →
+                </span>
+              </div>
 
             </a>
 
@@ -660,18 +909,35 @@
                 📄
               </div>
 
-              <h3>
-                Terms of Service
-              </h3>
+              <div data-lang="it">
+                <h3>
+                  Termini di Servizio
+                </h3>
 
-              <p>
-                Review the terms
-                that apply when using ExpenseMate.
-              </p>
+                <p>
+                  Consulta i termini
+                  applicabili all'utilizzo di ExpenseMate.
+                </p>
 
-              <span class="link">
-                Read Terms →
-              </span>
+                <span class="link">
+                  Leggi i Termini →
+                </span>
+              </div>
+
+              <div data-lang="en">
+                <h3>
+                  Terms of Service
+                </h3>
+
+                <p>
+                  Review the terms
+                  that apply when using ExpenseMate.
+                </p>
+
+                <span class="link">
+                  Read Terms →
+                </span>
+              </div>
 
             </a>
 
@@ -706,7 +972,13 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            Terms
+            <span class="inline-lang" data-lang="it">
+              Termini
+            </span>
+
+            <span class="inline-lang" data-lang="en">
+              Terms
+            </span>
           </a>
 
           <a
@@ -721,5 +993,65 @@
     </footer>
 
   </div>
+
+  <script>
+    (function () {
+      function detectLanguage() {
+        var stored =
+          localStorage.getItem(
+            "expensemate-support-language"
+          );
+
+        if (
+          stored === "it" ||
+          stored === "en"
+        ) {
+          return stored;
+        }
+
+        return navigator.language &&
+          navigator.language
+            .toLowerCase()
+            .startsWith("it")
+          ? "it"
+          : "en";
+      }
+
+      window.setLanguage =
+        function (lang) {
+          document.documentElement.lang =
+            lang;
+
+          localStorage.setItem(
+            "expensemate-support-language",
+            lang
+          );
+
+          document
+            .querySelectorAll(
+              "[data-lang-button]"
+            )
+            .forEach(
+              function (button) {
+                button.classList.toggle(
+                  "active",
+                  button.getAttribute(
+                    "data-lang-button"
+                  ) === lang
+                );
+              }
+            );
+        };
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          window.setLanguage(
+            detectLanguage()
+          );
+        }
+      );
+    })();
+  </script>
 </body>
 </html>
