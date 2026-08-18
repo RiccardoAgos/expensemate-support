@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ExpenseMate Support</title>
+
+  <meta
+    name="description"
+    content="Official support page for ExpenseMate."
+  />
+
+  <style>
+    :root {
+      --bg: #0f1115;
+      --surface: #171a21;
+      --surface-alt: #1f232c;
+      --border: #2a2f3a;
+
+      --text-primary: #ffffff;
+      --text-secondary: #b6bac5;
+      --text-muted: #7f8491;
+
+      --primary: #8b5cf6;
+      --primary-light: #a78bfa;
+      --primary-soft: rgba(139, 92, 246, 0.12);
+
+      --max-width: 860px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(139, 92, 246, 0.12),
+          transparent 34%
+        ),
+        var(--bg);
+
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 88px 0 56px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 82px;
+      height: 82px;
+      border-radius: 24px;
+
+      margin: 0 auto 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #3b3bd6,
+          #7c3aed
+        );
+
+      box-shadow:
+        0 18px 40px rgba(139, 92, 246, 0.28);
+
+      font-size: 34px;
+      font-weight: 800;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 7px 12px;
+
+      border-radius: 999px;
+
+      background: var(--primary-soft);
+      border: 1px solid rgba(139, 92, 246, 0.28);
+
+      color: var(--primary-light);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      margin: 0;
+
+      font-size: clamp(36px, 7vw, 58px);
+      line-height: 1.05;
+
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      max-width: 610px;
+
+      margin: 18px auto 0;
+
+      color: var(--text-secondary);
+
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 12px;
+    }
+
+    .button {
+      min-height: 48px;
+
+      padding: 0 20px;
+
+      border-radius: 14px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition:
+        transform 0.18s ease,
+        opacity 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: white;
+
+      box-shadow:
+        0 10px 28px rgba(139, 92, 246, 0.25);
+    }
+
+    .button-secondary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+
+      color: var(--text-primary);
+    }
+
+    /* MAIN */
+
+    main {
+      padding-bottom: 72px;
+    }
+
+    .section {
+      margin-top: 24px;
+    }
+
+    .section-label {
+      color: var(--primary-light);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      margin: 0;
+
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .section-description {
+      margin: 10px 0 0;
+
+      color: var(--text-secondary);
+
+      max-width: 650px;
+    }
+
+    .card {
+      margin-top: 18px;
+
+      padding: 22px;
+
+      border-radius: 20px;
+
+      background: rgba(23, 26, 33, 0.92);
+
+      border: 1px solid var(--border);
+
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.15);
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+
+      margin-top: 18px;
+    }
+
+    .support-card {
+      padding: 20px;
+
+      border-radius: 18px;
+
+      background: var(--surface);
+      border: 1px solid var(--border);
+
+      transition:
+        transform 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .support-card:hover {
+      transform: translateY(-2px);
+
+      border-color:
+        rgba(139, 92, 246, 0.45);
+    }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+
+      border-radius: 14px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: var(--primary-soft);
+
+      color: var(--primary-light);
+
+      font-size: 20px;
+
+      margin-bottom: 14px;
+    }
+
+    .support-card h3 {
+      margin: 0;
+
+      font-size: 17px;
+    }
+
+    .support-card p {
+      margin: 7px 0 0;
+
+      color: var(--text-secondary);
+
+      font-size: 14px;
+    }
+
+    .support-card .link {
+      margin-top: 14px;
+
+      display: inline-block;
+
+      color: var(--primary-light);
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .contact-info h3 {
+      margin: 0;
+
+      font-size: 19px;
+    }
+
+    .contact-info p {
+      margin: 6px 0 0;
+
+      color: var(--text-secondary);
+    }
+
+    .email {
+      margin-top: 10px;
+
+      color: var(--primary-light);
+
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 34px 0 42px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--text-muted);
+
+      font-size: 13px;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+      .hero {
+        padding-top: 64px;
+      }
+
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-card .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HERO -->
+
+    <header class="hero">
+      <div class="container">
+
+        <div class="logo">
+          EM
+        </div>
+
+        <div class="badge">
+          Official ExpenseMate Support
+        </div>
+
+        <h1>
+          We're here to help.
+        </h1>
+
+        <p>
+          Need assistance with ExpenseMate?
+          Find support information, contact details
+          and legal resources below.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="button button-primary"
+            href="mailto:expensemate.app@gmail.com"
+          >
+            Contact Support
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="#legal"
+          >
+            Legal Information
+          </a>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- MAIN -->
+
+    <main>
+      <div class="container">
+
+        <!-- CONTACT -->
+
+        <section class="section">
+
+          <div class="section-label">
+            Support
+          </div>
+
+          <h2 class="section-title">
+            Need help with ExpenseMate?
+          </h2>
+
+          <p class="section-description">
+            If you have a question, feedback
+            or encounter an issue while using the app,
+            feel free to contact us.
+          </p>
+
+          <div class="card contact-card">
+
+            <div class="contact-info">
+
+              <h3>
+                Contact Support
+              </h3>
+
+              <p>
+                We'll do our best to help you
+                as quickly as possible.
+              </p>
+
+              <div class="email">
+                riccardoworker@gmail.com
+              </div>
+
+            </div>
+
+            <a
+              class="button button-primary"
+              href="mailto:riccardoworker@gmail.com"
+            >
+              Send an Email
+            </a>
+
+          </div>
+
+        </section>
+
+        <!-- SUPPORT INFO -->
+
+        <section class="section">
+
+          <div class="section-label">
+            Help
+          </div>
+
+          <h2 class="section-title">
+            Before contacting support
+          </h2>
+
+          <p class="section-description">
+            When reporting an issue,
+            including a few details helps us
+            understand and resolve it faster.
+          </p>
+
+          <div class="support-grid">
+
+            <div class="support-card">
+
+              <div class="icon-box">
+                📱
+              </div>
+
+              <h3>
+                Device
+              </h3>
+
+              <p>
+                Include your device model
+                and operating system version.
+              </p>
+
+            </div>
+
+            <div class="support-card">
+
+              <div class="icon-box">
+                🧩
+              </div>
+
+              <h3>
+                Issue details
+              </h3>
+
+              <p>
+                Describe what happened
+                and the steps needed to reproduce the issue.
+              </p>
+
+            </div>
+
+            <div class="support-card">
+
+              <div class="icon-box">
+                🧾
+              </div>
+
+              <h3>
+                App version
+              </h3>
+
+              <p>
+                If possible, include
+                the version of ExpenseMate you are using.
+              </p>
+
+            </div>
+
+            <div class="support-card">
+
+              <div class="icon-box">
+                💡
+              </div>
+
+              <h3>
+                Feedback
+              </h3>
+
+              <p>
+                Suggestions and feedback
+                are always welcome.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- LEGAL -->
+
+        <section
+          id="legal"
+          class="section"
+        >
+
+          <div class="section-label">
+            Legal
+          </div>
+
+          <h2 class="section-title">
+            Privacy & Terms
+          </h2>
+
+          <p class="section-description">
+            Learn more about how ExpenseMate
+            handles data and the terms that apply
+            when using the app.
+          </p>
+
+          <div class="support-grid">
+
+            <a
+              class="support-card"
+              href="https://riccardoagos.github.io/expense-mate-legal/privacy.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+              <div class="icon-box">
+                🔒
+              </div>
+
+              <h3>
+                Privacy Policy
+              </h3>
+
+              <p>
+                Learn how ExpenseMate
+                handles and protects your data.
+              </p>
+
+              <span class="link">
+                Read Privacy Policy →
+              </span>
+
+            </a>
+
+            <a
+              class="support-card"
+              href="https://riccardoagos.github.io/expense-mate-legal/terms.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+              <div class="icon-box">
+                📄
+              </div>
+
+              <h3>
+                Terms of Service
+              </h3>
+
+              <p>
+                Review the terms
+                that apply when using ExpenseMate.
+              </p>
+
+              <span class="link">
+                Read Terms →
+              </span>
+
+            </a>
+
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+      <div class="container footer-row">
+
+        <div>
+          ExpenseMate · Version 1.0
+        </div>
+
+        <div class="footer-links">
+
+          <a
+            href="https://riccardoagos.github.io/expense-mate-legal/privacy.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Privacy
+          </a>
+
+          <a
+            href="https://riccardoagos.github.io/expense-mate-legal/terms.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Terms
+          </a>
+
+          <a
+            href="mailto:riccardoworker@gmail.com"
+          >
+            Support
+          </a>
+
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
